@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>dpp_stm32f746g-discovery-web</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Include</name>
+			<type>2</type>
+			<location>C:/Users/Harry Rostovtsev/workspace/qpc-5.8.2/3rd_party/CMSIS/Include</location>
+		</link>
+		<link>
+			<name>gnu</name>
+			<type>2</type>
+			<location>C:/Users/Harry Rostovtsev/workspace/qpc-5.8.2/examples/arm-cm/dpp_stm32f746g-discovery-web/qk/gnu</location>
+		</link>
+		<link>
+			<name>include</name>
+			<type>2</type>
+			<location>C:/Users/Harry Rostovtsev/workspace/qpc-5.8.2/include</location>
+		</link>
+		<link>
+			<name>source</name>
+			<type>2</type>
+			<location>C:/Users/Harry Rostovtsev/workspace/qpc-5.8.2/source</location>
+		</link>
+		<link>
+			<name>stm32f7-discovery</name>
+			<type>2</type>
+			<location>C:/Users/Harry Rostovtsev/workspace/qpc-5.8.2/3rd_party/stm32f7-discovery</location>
+		</link>
+	</linkedResources>
+</projectDescription>
