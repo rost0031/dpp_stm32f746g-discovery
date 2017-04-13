@@ -186,7 +186,7 @@ BIN   := $(GNU_ARM)/bin/arm-eabi-objcopy
 #    http://sourceforge.net/projects/qpc/files/Qtools
 
 MKDIR := mkdir
-RM    := rm
+RM    := rm -rf
 
 #-----------------------------------------------------------------------------
 # build options for various configurations for ARM Cortex-M4F

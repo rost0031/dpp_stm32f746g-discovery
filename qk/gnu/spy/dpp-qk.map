@@ -29,6 +29,8 @@ Discarded input sections
  .bss           0x00000000        0x0 spy/bsp.o
  .text.BSP_terminate
                 0x00000000        0x2 spy/bsp.o
+ .text.HAL_UART_RxCpltCallback
+                0x00000000        0x2 spy/bsp.o
  .text.QF_onCleanup
                 0x00000000        0x2 spy/bsp.o
  .text.QS_onCleanup
@@ -291,7 +293,7 @@ Discarded input sections
  .data          0x00000000        0x0 spy/stm32f7xx_hal_msp.o
  .bss           0x00000000        0x0 spy/stm32f7xx_hal_msp.o
  .text.HAL_UART_MspDeInit
-                0x00000000       0x34 spy/stm32f7xx_hal_msp.o
+                0x00000000       0x3c spy/stm32f7xx_hal_msp.o
  .text          0x00000000        0x0 spy/stm32f7xx_hal_uart.o
  .data          0x00000000        0x0 spy/stm32f7xx_hal_uart.o
  .bss           0x00000000        0x0 spy/stm32f7xx_hal_uart.o
@@ -305,8 +307,6 @@ Discarded input sections
                 0x00000000       0x3e spy/stm32f7xx_hal_uart.o
  .text.HAL_UART_Transmit_IT
                 0x00000000       0x48 spy/stm32f7xx_hal_uart.o
- .text.HAL_UART_Receive_IT
-                0x00000000       0xaa spy/stm32f7xx_hal_uart.o
  .text.HAL_UART_Transmit_DMA
                 0x00000000       0x8c spy/stm32f7xx_hal_uart.o
  .text.HAL_UART_Receive_DMA
@@ -630,7 +630,7 @@ LOAD spy/qstamp.o
                 0x08000000                g_pfnVectors
                 0x080001c8                . = ALIGN (0x4)
 
-.text           0x080001c8     0x4fa0
+.text           0x080001c8     0x504c
                 0x080001c8                . = ALIGN (0x4)
  *(.text)
  .text          0x080001c8       0x4c c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/thumb/cortex_m7\libc.a(lib_a-init.o)
@@ -664,662 +664,666 @@ LOAD spy/qstamp.o
                 0x08000410       0x18 spy/bsp.o
                 0x08000410                BSP_randomSeed
  .text.QF_onStartup
-                0x08000428       0x6c spy/bsp.o
+                0x08000428       0x5c spy/bsp.o
                 0x08000428                QF_onStartup
  .text.QK_onIdle
-                0x08000494       0x48 spy/bsp.o
-                0x08000494                QK_onIdle
+                0x08000484       0x48 spy/bsp.o
+                0x08000484                QK_onIdle
  .text.QS_onStartup
-                0x080004dc       0xb4 spy/bsp.o
-                0x080004dc                QS_onStartup
+                0x080004cc       0xc0 spy/bsp.o
+                0x080004cc                QS_onStartup
  .text.QS_onGetTime
-                0x08000590       0x34 spy/bsp.o
-                0x08000590                QS_onGetTime
+                0x0800058c       0x34 spy/bsp.o
+                0x0800058c                QS_onGetTime
  .text.BSP_displayPhilStat
-                0x080005c4       0x6c spy/bsp.o
-                0x080005c4                BSP_displayPhilStat
+                0x080005c0       0x6c spy/bsp.o
+                0x080005c0                BSP_displayPhilStat
  .text.QS_onFlush
-                0x08000630       0x40 spy/bsp.o
-                0x08000630                QS_onFlush
+                0x0800062c       0x40 spy/bsp.o
+                0x0800062c                QS_onFlush
  .text.Q_onAssert
-                0x08000670       0x58 spy/bsp.o
-                0x08000670                Q_onAssert
+                0x0800066c       0x58 spy/bsp.o
+                0x0800066c                Q_onAssert
  .text.BSP_init
-                0x080006c8      0x1b0 spy/bsp.o
-                0x080006c8                BSP_init
+                0x080006c4      0x1b0 spy/bsp.o
+                0x080006c4                BSP_init
  .text.QS_onReset
-                0x08000878       0x24 spy/bsp.o
-                0x08000878                QS_onReset
+                0x08000874       0x24 spy/bsp.o
+                0x08000874                QS_onReset
  .text.QS_onCommand
-                0x0800089c       0x74 spy/bsp.o
-                0x0800089c                QS_onCommand
- .text.main     0x08000910      0x140 spy/main.o
-                0x08000910                main
+                0x08000898       0x74 spy/bsp.o
+                0x08000898                QS_onCommand
+ .text.main     0x0800090c      0x140 spy/main.o
+                0x0800090c                main
  .text.Philo_initial
-                0x08000a50      0x1d8 spy/philo.o
+                0x08000a4c      0x1d8 spy/philo.o
  .text.Philo_eating
-                0x08000c28       0xb0 spy/philo.o
+                0x08000c24       0xb0 spy/philo.o
  .text.Philo_hungry
-                0x08000cd8       0xa4 spy/philo.o
+                0x08000cd4       0xa4 spy/philo.o
  .text.Philo_thinking
-                0x08000d7c       0x9c spy/philo.o
+                0x08000d78       0x9c spy/philo.o
  .text.Philo_ctor
-                0x08000e18       0x38 spy/philo.o
-                0x08000e18                Philo_ctor
+                0x08000e14       0x38 spy/philo.o
+                0x08000e14                Philo_ctor
  .text.Table_initial
-                0x08000e50      0x19c spy/table.o
+                0x08000e4c      0x19c spy/table.o
  .text.Table_paused
-                0x08000fec       0xe8 spy/table.o
+                0x08000fe8       0xe8 spy/table.o
  .text.Table_active
-                0x080010d4       0x2c spy/table.o
+                0x080010d0       0x2c spy/table.o
  .text.Table_serving
-                0x08001100      0x26c spy/table.o
+                0x080010fc      0x26c spy/table.o
  .text.Table_ctor
-                0x0800136c       0x2c spy/table.o
-                0x0800136c                Table_ctor
+                0x08001368       0x2c spy/table.o
+                0x08001368                Table_ctor
  .text.MemManage_Handler
-                0x08001398       0x18 spy/startup_stm32f4xx.o
-                0x08001398                MemManage_Handler
+                0x08001394       0x18 spy/startup_stm32f4xx.o
+                0x08001394                MemManage_Handler
  .text.HardFault_Handler
-                0x080013b0       0x18 spy/startup_stm32f4xx.o
-                0x080013b0                HardFault_Handler
+                0x080013ac       0x18 spy/startup_stm32f4xx.o
+                0x080013ac                HardFault_Handler
  .text.BusFault_Handler
-                0x080013c8       0x18 spy/startup_stm32f4xx.o
-                0x080013c8                BusFault_Handler
+                0x080013c4       0x18 spy/startup_stm32f4xx.o
+                0x080013c4                BusFault_Handler
  .text.UsageFault_Handler
-                0x080013e0       0x1c spy/startup_stm32f4xx.o
-                0x080013e0                UsageFault_Handler
+                0x080013dc       0x1c spy/startup_stm32f4xx.o
+                0x080013dc                UsageFault_Handler
  .text.Default_Handler
-                0x080013fc       0x18 spy/startup_stm32f4xx.o
-                0x080013fc                RTC_Alarm_IRQHandler
-                0x080013fc                EXTI2_IRQHandler
-                0x080013fc                TIM8_CC_IRQHandler
-                0x080013fc                DebugMon_Handler
-                0x080013fc                UART8_IRQHandler
-                0x080013fc                SPI4_IRQHandler
-                0x080013fc                TIM1_CC_IRQHandler
-                0x080013fc                DMA2_Stream5_IRQHandler
-                0x080013fc                DMA1_Stream5_IRQHandler
-                0x080013fc                PVD_IRQHandler
-                0x080013fc                TAMP_STAMP_IRQHandler
-                0x080013fc                CAN2_RX1_IRQHandler
-                0x080013fc                EXTI3_IRQHandler
-                0x080013fc                TIM8_TRG_COM_TIM14_IRQHandler
-                0x080013fc                TIM1_UP_TIM10_IRQHandler
-                0x080013fc                TIM8_UP_TIM13_IRQHandler
-                0x080013fc                I2C3_ER_IRQHandler
-                0x080013fc                EXTI0_IRQHandler
-                0x080013fc                I2C2_EV_IRQHandler
-                0x080013fc                DMA1_Stream2_IRQHandler
-                0x080013fc                CAN1_RX0_IRQHandler
-                0x080013fc                FPU_IRQHandler
-                0x080013fc                OTG_HS_WKUP_IRQHandler
-                0x080013fc                LTDC_ER_IRQHandler
-                0x080013fc                CAN2_SCE_IRQHandler
-                0x080013fc                DMA2_Stream2_IRQHandler
-                0x080013fc                SPI1_IRQHandler
-                0x080013fc                TIM6_DAC_IRQHandler
-                0x080013fc                TIM1_BRK_TIM9_IRQHandler
-                0x080013fc                DCMI_IRQHandler
-                0x080013fc                CAN2_RX0_IRQHandler
-                0x080013fc                DMA2_Stream3_IRQHandler
-                0x080013fc                SAI2_IRQHandler
-                0x080013fc                USART6_IRQHandler
-                0x080013fc                USART3_IRQHandler
-                0x080013fc                CAN1_RX1_IRQHandler
-                0x080013fc                UART5_IRQHandler
-                0x080013fc                DMA2_Stream0_IRQHandler
-                0x080013fc                TIM4_IRQHandler
-                0x080013fc                QUADSPI_IRQHandler
-                0x080013fc                I2C1_EV_IRQHandler
-                0x080013fc                DMA1_Stream6_IRQHandler
-                0x080013fc                DMA1_Stream1_IRQHandler
-                0x080013fc                UART4_IRQHandler
-                0x080013fc                TIM3_IRQHandler
-                0x080013fc                RCC_IRQHandler
-                0x080013fc                TIM8_BRK_TIM12_IRQHandler
-                0x080013fc                Default_Handler
-                0x080013fc                CEC_IRQHandler
-                0x080013fc                EXTI15_10_IRQHandler
-                0x080013fc                ADC_IRQHandler
-                0x080013fc                DMA1_Stream7_IRQHandler
-                0x080013fc                SPI5_IRQHandler
-                0x080013fc                TIM7_IRQHandler
-                0x080013fc                SDMMC1_IRQHandler
-                0x080013fc                CAN2_TX_IRQHandler
-                0x080013fc                TIM5_IRQHandler
-                0x080013fc                DMA2_Stream7_IRQHandler
-                0x080013fc                I2C3_EV_IRQHandler
-                0x080013fc                EXTI9_5_IRQHandler
-                0x080013fc                RTC_WKUP_IRQHandler
-                0x080013fc                LTDC_IRQHandler
-                0x080013fc                ETH_WKUP_IRQHandler
-                0x080013fc                SPDIF_RX_IRQHandler
-                0x080013fc                SPI2_IRQHandler
-                0x080013fc                OTG_HS_EP1_IN_IRQHandler
-                0x080013fc                DMA1_Stream0_IRQHandler
-                0x080013fc                CAN1_TX_IRQHandler
-                0x080013fc                SVC_Handler
-                0x080013fc                EXTI4_IRQHandler
-                0x080013fc                RNG_IRQHandler
-                0x080013fc                ETH_IRQHandler
-                0x080013fc                OTG_HS_EP1_OUT_IRQHandler
-                0x080013fc                WWDG_IRQHandler
-                0x080013fc                SPI6_IRQHandler
-                0x080013fc                I2C4_EV_IRQHandler
-                0x080013fc                TIM2_IRQHandler
-                0x080013fc                OTG_FS_WKUP_IRQHandler
-                0x080013fc                TIM1_TRG_COM_TIM11_IRQHandler
-                0x080013fc                OTG_HS_IRQHandler
-                0x080013fc                DMA2D_IRQHandler
-                0x080013fc                EXTI1_IRQHandler
-                0x080013fc                UART7_IRQHandler
-                0x080013fc                USART2_IRQHandler
-                0x080013fc                I2C2_ER_IRQHandler
-                0x080013fc                DMA2_Stream1_IRQHandler
-                0x080013fc                CAN1_SCE_IRQHandler
-                0x080013fc                FLASH_IRQHandler
-                0x080013fc                DMA2_Stream4_IRQHandler
-                0x080013fc                OTG_FS_IRQHandler
-                0x080013fc                SPI3_IRQHandler
-                0x080013fc                DMA1_Stream4_IRQHandler
-                0x080013fc                I2C1_ER_IRQHandler
-                0x080013fc                FMC_IRQHandler
-                0x080013fc                LPTIM1_IRQHandler
-                0x080013fc                I2C4_ER_IRQHandler
-                0x080013fc                DMA2_Stream6_IRQHandler
-                0x080013fc                SAI1_IRQHandler
-                0x080013fc                DMA1_Stream3_IRQHandler
- .text._init    0x08001414        0x2 spy/startup_stm32f4xx.o
-                0x08001414                _init
- .text._fini    0x08001416        0x2 spy/startup_stm32f4xx.o
-                0x08001416                _fini
+                0x080013f8       0x18 spy/startup_stm32f4xx.o
+                0x080013f8                RTC_Alarm_IRQHandler
+                0x080013f8                EXTI2_IRQHandler
+                0x080013f8                TIM8_CC_IRQHandler
+                0x080013f8                DebugMon_Handler
+                0x080013f8                UART8_IRQHandler
+                0x080013f8                SPI4_IRQHandler
+                0x080013f8                TIM1_CC_IRQHandler
+                0x080013f8                DMA2_Stream5_IRQHandler
+                0x080013f8                DMA1_Stream5_IRQHandler
+                0x080013f8                PVD_IRQHandler
+                0x080013f8                TAMP_STAMP_IRQHandler
+                0x080013f8                CAN2_RX1_IRQHandler
+                0x080013f8                EXTI3_IRQHandler
+                0x080013f8                TIM8_TRG_COM_TIM14_IRQHandler
+                0x080013f8                TIM1_UP_TIM10_IRQHandler
+                0x080013f8                TIM8_UP_TIM13_IRQHandler
+                0x080013f8                I2C3_ER_IRQHandler
+                0x080013f8                EXTI0_IRQHandler
+                0x080013f8                I2C2_EV_IRQHandler
+                0x080013f8                DMA1_Stream2_IRQHandler
+                0x080013f8                CAN1_RX0_IRQHandler
+                0x080013f8                FPU_IRQHandler
+                0x080013f8                OTG_HS_WKUP_IRQHandler
+                0x080013f8                LTDC_ER_IRQHandler
+                0x080013f8                CAN2_SCE_IRQHandler
+                0x080013f8                DMA2_Stream2_IRQHandler
+                0x080013f8                SPI1_IRQHandler
+                0x080013f8                TIM6_DAC_IRQHandler
+                0x080013f8                TIM1_BRK_TIM9_IRQHandler
+                0x080013f8                DCMI_IRQHandler
+                0x080013f8                CAN2_RX0_IRQHandler
+                0x080013f8                DMA2_Stream3_IRQHandler
+                0x080013f8                SAI2_IRQHandler
+                0x080013f8                USART6_IRQHandler
+                0x080013f8                USART3_IRQHandler
+                0x080013f8                CAN1_RX1_IRQHandler
+                0x080013f8                UART5_IRQHandler
+                0x080013f8                DMA2_Stream0_IRQHandler
+                0x080013f8                TIM4_IRQHandler
+                0x080013f8                QUADSPI_IRQHandler
+                0x080013f8                I2C1_EV_IRQHandler
+                0x080013f8                DMA1_Stream6_IRQHandler
+                0x080013f8                DMA1_Stream1_IRQHandler
+                0x080013f8                UART4_IRQHandler
+                0x080013f8                TIM3_IRQHandler
+                0x080013f8                RCC_IRQHandler
+                0x080013f8                TIM8_BRK_TIM12_IRQHandler
+                0x080013f8                Default_Handler
+                0x080013f8                CEC_IRQHandler
+                0x080013f8                EXTI15_10_IRQHandler
+                0x080013f8                ADC_IRQHandler
+                0x080013f8                DMA1_Stream7_IRQHandler
+                0x080013f8                SPI5_IRQHandler
+                0x080013f8                TIM7_IRQHandler
+                0x080013f8                SDMMC1_IRQHandler
+                0x080013f8                CAN2_TX_IRQHandler
+                0x080013f8                TIM5_IRQHandler
+                0x080013f8                DMA2_Stream7_IRQHandler
+                0x080013f8                I2C3_EV_IRQHandler
+                0x080013f8                EXTI9_5_IRQHandler
+                0x080013f8                RTC_WKUP_IRQHandler
+                0x080013f8                LTDC_IRQHandler
+                0x080013f8                ETH_WKUP_IRQHandler
+                0x080013f8                SPDIF_RX_IRQHandler
+                0x080013f8                SPI2_IRQHandler
+                0x080013f8                OTG_HS_EP1_IN_IRQHandler
+                0x080013f8                DMA1_Stream0_IRQHandler
+                0x080013f8                CAN1_TX_IRQHandler
+                0x080013f8                SVC_Handler
+                0x080013f8                EXTI4_IRQHandler
+                0x080013f8                RNG_IRQHandler
+                0x080013f8                ETH_IRQHandler
+                0x080013f8                OTG_HS_EP1_OUT_IRQHandler
+                0x080013f8                WWDG_IRQHandler
+                0x080013f8                SPI6_IRQHandler
+                0x080013f8                I2C4_EV_IRQHandler
+                0x080013f8                TIM2_IRQHandler
+                0x080013f8                OTG_FS_WKUP_IRQHandler
+                0x080013f8                TIM1_TRG_COM_TIM11_IRQHandler
+                0x080013f8                OTG_HS_IRQHandler
+                0x080013f8                DMA2D_IRQHandler
+                0x080013f8                EXTI1_IRQHandler
+                0x080013f8                UART7_IRQHandler
+                0x080013f8                USART2_IRQHandler
+                0x080013f8                I2C2_ER_IRQHandler
+                0x080013f8                DMA2_Stream1_IRQHandler
+                0x080013f8                CAN1_SCE_IRQHandler
+                0x080013f8                FLASH_IRQHandler
+                0x080013f8                DMA2_Stream4_IRQHandler
+                0x080013f8                OTG_FS_IRQHandler
+                0x080013f8                SPI3_IRQHandler
+                0x080013f8                DMA1_Stream4_IRQHandler
+                0x080013f8                I2C1_ER_IRQHandler
+                0x080013f8                FMC_IRQHandler
+                0x080013f8                LPTIM1_IRQHandler
+                0x080013f8                I2C4_ER_IRQHandler
+                0x080013f8                DMA2_Stream6_IRQHandler
+                0x080013f8                SAI1_IRQHandler
+                0x080013f8                DMA1_Stream3_IRQHandler
+ .text._init    0x08001410        0x2 spy/startup_stm32f4xx.o
+                0x08001410                _init
+ .text._fini    0x08001412        0x2 spy/startup_stm32f4xx.o
+                0x08001412                _fini
  .text.assert_failed
-                0x08001418       0x10 spy/startup_stm32f4xx.o
-                0x08001418                assert_failed
+                0x08001414       0x10 spy/startup_stm32f4xx.o
+                0x08001414                assert_failed
  .text.Reset_Handler
-                0x08001428       0x7c spy/startup_stm32f4xx.o
-                0x08001428                Reset_Handler
+                0x08001424       0x7c spy/startup_stm32f4xx.o
+                0x08001424                Reset_Handler
  .text.SystemInit
-                0x080014a4       0x50 spy/system_stm32f7xx.o
-                0x080014a4                SystemInit
+                0x080014a0       0x50 spy/system_stm32f7xx.o
+                0x080014a0                SystemInit
  .text.BSP_LED_Init
-                0x080014f4       0x4c spy/stm32746g_discovery.o
-                0x080014f4                BSP_LED_Init
+                0x080014f0       0x4c spy/stm32746g_discovery.o
+                0x080014f0                BSP_LED_Init
  .text.BSP_LED_On
-                0x08001540       0x18 spy/stm32746g_discovery.o
-                0x08001540                BSP_LED_On
+                0x0800153c       0x18 spy/stm32746g_discovery.o
+                0x0800153c                BSP_LED_On
  .text.BSP_LED_Off
-                0x08001558       0x18 spy/stm32746g_discovery.o
-                0x08001558                BSP_LED_Off
+                0x08001554       0x18 spy/stm32746g_discovery.o
+                0x08001554                BSP_LED_Off
  .text.BSP_PB_Init
-                0x08001570       0xd4 spy/stm32746g_discovery.o
-                0x08001570                BSP_PB_Init
+                0x0800156c       0xd4 spy/stm32746g_discovery.o
+                0x0800156c                BSP_PB_Init
  .text.BSP_PB_GetState
-                0x08001644       0x1c spy/stm32746g_discovery.o
-                0x08001644                BSP_PB_GetState
+                0x08001640       0x1c spy/stm32746g_discovery.o
+                0x08001640                BSP_PB_GetState
  .text.HAL_InitTick
-                0x08001660       0x2c spy/stm32f7xx_hal.o
-                0x08001660                HAL_InitTick
+                0x0800165c       0x2c spy/stm32f7xx_hal.o
+                0x0800165c                HAL_InitTick
  .text.HAL_GetTick
-                0x0800168c        0xc spy/stm32f7xx_hal.o
-                0x0800168c                HAL_GetTick
+                0x08001688        0xc spy/stm32f7xx_hal.o
+                0x08001688                HAL_GetTick
  .text.HAL_NVIC_SetPriority
-                0x08001698       0x5c spy/stm32f7xx_hal_cortex.o
-                0x08001698                HAL_NVIC_SetPriority
+                0x08001694       0x5c spy/stm32f7xx_hal_cortex.o
+                0x08001694                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x080016f4       0x1c spy/stm32f7xx_hal_cortex.o
-                0x080016f4                HAL_NVIC_EnableIRQ
+                0x080016f0       0x1c spy/stm32f7xx_hal_cortex.o
+                0x080016f0                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x08001710       0x2c spy/stm32f7xx_hal_cortex.o
-                0x08001710                HAL_SYSTICK_Config
+                0x0800170c       0x2c spy/stm32f7xx_hal_cortex.o
+                0x0800170c                HAL_SYSTICK_Config
  .text.HAL_GPIO_Init
-                0x0800173c      0x1e0 spy/stm32f7xx_hal_gpio.o
-                0x0800173c                HAL_GPIO_Init
+                0x08001738      0x1e0 spy/stm32f7xx_hal_gpio.o
+                0x08001738                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x0800191c        0xc spy/stm32f7xx_hal_gpio.o
-                0x0800191c                HAL_GPIO_ReadPin
+                0x08001918        0xc spy/stm32f7xx_hal_gpio.o
+                0x08001918                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x08001928        0xc spy/stm32f7xx_hal_gpio.o
-                0x08001928                HAL_GPIO_WritePin
+                0x08001924        0xc spy/stm32f7xx_hal_gpio.o
+                0x08001924                HAL_GPIO_WritePin
  .text.HAL_PWREx_EnableOverDrive
-                0x08001934       0x7c spy/stm32f7xx_hal_pwr_ex.o
-                0x08001934                HAL_PWREx_EnableOverDrive
+                0x08001930       0x7c spy/stm32f7xx_hal_pwr_ex.o
+                0x08001930                HAL_PWREx_EnableOverDrive
  .text.HAL_RCC_OscConfig
-                0x080019b0      0x410 spy/stm32f7xx_hal_rcc.o
-                0x080019b0                HAL_RCC_OscConfig
+                0x080019ac      0x410 spy/stm32f7xx_hal_rcc.o
+                0x080019ac                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08001dc0       0x78 spy/stm32f7xx_hal_rcc.o
-                0x08001dc0                HAL_RCC_GetSysClockFreq
+                0x08001dbc       0x78 spy/stm32f7xx_hal_rcc.o
+                0x08001dbc                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x08001e38      0x198 spy/stm32f7xx_hal_rcc.o
-                0x08001e38                HAL_RCC_ClockConfig
+                0x08001e34      0x198 spy/stm32f7xx_hal_rcc.o
+                0x08001e34                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetPCLK1Freq
-                0x08001fd0       0x30 spy/stm32f7xx_hal_rcc.o
-                0x08001fd0                HAL_RCC_GetPCLK1Freq
+                0x08001fcc       0x30 spy/stm32f7xx_hal_rcc.o
+                0x08001fcc                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x08002000       0x30 spy/stm32f7xx_hal_rcc.o
-                0x08002000                HAL_RCC_GetPCLK2Freq
+                0x08001ffc       0x30 spy/stm32f7xx_hal_rcc.o
+                0x08001ffc                HAL_RCC_GetPCLK2Freq
  .text.HAL_UART_MspInit
-                0x08002030       0x84 spy/stm32f7xx_hal_msp.o
-                0x08002030                HAL_UART_MspInit
+                0x0800202c       0x88 spy/stm32f7xx_hal_msp.o
+                0x0800202c                HAL_UART_MspInit
+ .text.HAL_UART_Receive_IT
+                0x080020b4       0xaa spy/stm32f7xx_hal_uart.o
+                0x080020b4                HAL_UART_Receive_IT
  .text.UART_WaitOnFlagUntilTimeout
-                0x080020b4       0x64 spy/stm32f7xx_hal_uart.o
-                0x080020b4                UART_WaitOnFlagUntilTimeout
+                0x0800215e       0x64 spy/stm32f7xx_hal_uart.o
+                0x0800215e                UART_WaitOnFlagUntilTimeout
+ *fill*         0x080021c2        0x2 
  .text.UART_SetConfig
-                0x08002118      0x328 spy/stm32f7xx_hal_uart.o
-                0x08002118                UART_SetConfig
+                0x080021c4      0x328 spy/stm32f7xx_hal_uart.o
+                0x080021c4                UART_SetConfig
  .text.UART_AdvFeatureConfig
-                0x08002440       0xca spy/stm32f7xx_hal_uart.o
-                0x08002440                UART_AdvFeatureConfig
+                0x080024ec       0xca spy/stm32f7xx_hal_uart.o
+                0x080024ec                UART_AdvFeatureConfig
  .text.UART_CheckIdleState
-                0x0800250a       0x48 spy/stm32f7xx_hal_uart.o
-                0x0800250a                UART_CheckIdleState
+                0x080025b6       0x48 spy/stm32f7xx_hal_uart.o
+                0x080025b6                UART_CheckIdleState
  .text.HAL_UART_Init
-                0x08002552       0x68 spy/stm32f7xx_hal_uart.o
-                0x08002552                HAL_UART_Init
+                0x080025fe       0x68 spy/stm32f7xx_hal_uart.o
+                0x080025fe                HAL_UART_Init
  .text.QHsm_top
-                0x080025ba        0x4 spy/qep_hsm.o
-                0x080025ba                QHsm_top
- *fill*         0x080025be        0x2 
+                0x08002666        0x4 spy/qep_hsm.o
+                0x08002666                QHsm_top
+ *fill*         0x0800266a        0x2 
  .text.QHsm_init_
-                0x080025c0      0x1c0 spy/qep_hsm.o
-                0x080025c0                QHsm_init_
+                0x0800266c      0x1c0 spy/qep_hsm.o
+                0x0800266c                QHsm_init_
  .text.QHsm_dispatch_
-                0x08002780      0x674 spy/qep_hsm.o
-                0x08002780                QHsm_dispatch_
+                0x0800282c      0x674 spy/qep_hsm.o
+                0x0800282c                QHsm_dispatch_
  .text.QHsm_ctor
-                0x08002df4       0x14 spy/qep_hsm.o
-                0x08002df4                QHsm_ctor
- .text.QF_add_  0x08002e08       0x70 spy/qf_act.o
-                0x08002e08                QF_add_
+                0x08002ea0       0x14 spy/qep_hsm.o
+                0x08002ea0                QHsm_ctor
+ .text.QF_add_  0x08002eb4       0x70 spy/qf_act.o
+                0x08002eb4                QF_add_
  .text.QF_bzero
-                0x08002e78       0x10 spy/qf_act.o
-                0x08002e78                QF_bzero
+                0x08002f24       0x10 spy/qf_act.o
+                0x08002f24                QF_bzero
  .text.QActive_post_
-                0x08002e88      0x158 spy/qf_actq.o
-                0x08002e88                QActive_post_
+                0x08002f34      0x158 spy/qf_actq.o
+                0x08002f34                QActive_post_
  .text.QActive_postLIFO_
-                0x08002fe0       0xdc spy/qf_actq.o
-                0x08002fe0                QActive_postLIFO_
+                0x0800308c       0xdc spy/qf_actq.o
+                0x0800308c                QActive_postLIFO_
  .text.QActive_get_
-                0x080030bc       0xe4 spy/qf_actq.o
-                0x080030bc                QActive_get_
+                0x08003168       0xe4 spy/qf_actq.o
+                0x08003168                QActive_get_
  .text.QF_poolInit
-                0x080031a0       0x68 spy/qf_dyn.o
-                0x080031a0                QF_poolInit
+                0x0800324c       0x68 spy/qf_dyn.o
+                0x0800324c                QF_poolInit
  .text.QF_newX_
-                0x08003208       0xb4 spy/qf_dyn.o
-                0x08003208                QF_newX_
- .text.QF_gc    0x080032bc       0xc0 spy/qf_dyn.o
-                0x080032bc                QF_gc
+                0x080032b4       0xb4 spy/qf_dyn.o
+                0x080032b4                QF_newX_
+ .text.QF_gc    0x08003368       0xc0 spy/qf_dyn.o
+                0x08003368                QF_gc
  .text.QF_poolGetMaxBlockSize
-                0x0800337c       0x1c spy/qf_dyn.o
-                0x0800337c                QF_poolGetMaxBlockSize
+                0x08003428       0x1c spy/qf_dyn.o
+                0x08003428                QF_poolGetMaxBlockSize
  .text.QMPool_init
-                0x08003398       0xc8 spy/qf_mem.o
-                0x08003398                QMPool_init
+                0x08003444       0xc8 spy/qf_mem.o
+                0x08003444                QMPool_init
  .text.QMPool_put
-                0x08003460       0x80 spy/qf_mem.o
-                0x08003460                QMPool_put
+                0x0800350c       0x80 spy/qf_mem.o
+                0x0800350c                QMPool_put
  .text.QMPool_get
-                0x080034e0      0x104 spy/qf_mem.o
-                0x080034e0                QMPool_get
+                0x0800358c      0x104 spy/qf_mem.o
+                0x0800358c                QMPool_get
  .text.QF_psInit
-                0x080035e4       0x1c spy/qf_ps.o
-                0x080035e4                QF_psInit
+                0x08003690       0x1c spy/qf_ps.o
+                0x08003690                QF_psInit
  .text.QF_publish_
-                0x08003600      0x108 spy/qf_ps.o
-                0x08003600                QF_publish_
+                0x080036ac      0x108 spy/qf_ps.o
+                0x080036ac                QF_publish_
  .text.QActive_subscribe
-                0x08003708       0x98 spy/qf_ps.o
-                0x08003708                QActive_subscribe
+                0x080037b4       0x98 spy/qf_ps.o
+                0x080037b4                QActive_subscribe
  .text.QActive_ctor
-                0x080037a0       0x20 spy/qf_qact.o
-                0x080037a0                QActive_ctor
+                0x0800384c       0x20 spy/qf_qact.o
+                0x0800384c                QActive_ctor
  .text.QEQueue_init
-                0x080037c0       0x58 spy/qf_qeq.o
-                0x080037c0                QEQueue_init
+                0x0800386c       0x58 spy/qf_qeq.o
+                0x0800386c                QEQueue_init
  .text.QF_tickX_
-                0x08003818      0x170 spy/qf_time.o
-                0x08003818                QF_tickX_
+                0x080038c4      0x170 spy/qf_time.o
+                0x080038c4                QF_tickX_
  .text.QTimeEvt_ctorX
-                0x08003988       0x38 spy/qf_time.o
-                0x08003988                QTimeEvt_ctorX
+                0x08003a34       0x38 spy/qf_time.o
+                0x08003a34                QTimeEvt_ctorX
  .text.QTimeEvt_armX
-                0x080039c0       0xbc spy/qf_time.o
-                0x080039c0                QTimeEvt_armX
+                0x08003a6c       0xbc spy/qf_time.o
+                0x08003a6c                QTimeEvt_armX
  .text.QTimeEvt_disarm
-                0x08003a7c       0xbc spy/qf_time.o
-                0x08003a7c                QTimeEvt_disarm
- .text.QF_init  0x08003b38       0x50 spy/qk.o
-                0x08003b38                QF_init
+                0x08003b28       0xbc spy/qf_time.o
+                0x08003b28                QTimeEvt_disarm
+ .text.QF_init  0x08003be4       0x50 spy/qk.o
+                0x08003be4                QF_init
  .text.QK_sched_
-                0x08003b88       0x44 spy/qk.o
-                0x08003b88                QK_sched_
+                0x08003c34       0x44 spy/qk.o
+                0x08003c34                QK_sched_
  .text.QK_activate_
-                0x08003bcc      0x144 spy/qk.o
-                0x08003bcc                QK_activate_
- .text.QF_run   0x08003d10       0x30 spy/qk.o
-                0x08003d10                QF_run
+                0x08003c78      0x144 spy/qk.o
+                0x08003c78                QK_activate_
+ .text.QF_run   0x08003dbc       0x30 spy/qk.o
+                0x08003dbc                QF_run
  .text.QActive_start_
-                0x08003d40       0x70 spy/qk.o
-                0x08003d40                QActive_start_
+                0x08003dec       0x70 spy/qk.o
+                0x08003dec                QActive_start_
  .text.QMutex_init
-                0x08003db0        0x8 spy/qk_mutex.o
-                0x08003db0                QMutex_init
+                0x08003e5c        0x8 spy/qk_mutex.o
+                0x08003e5c                QMutex_init
  .text.QMutex_lock
-                0x08003db8       0x70 spy/qk_mutex.o
-                0x08003db8                QMutex_lock
+                0x08003e64       0x70 spy/qk_mutex.o
+                0x08003e64                QMutex_lock
  .text.QMutex_unlock
-                0x08003e28       0x80 spy/qk_mutex.o
-                0x08003e28                QMutex_unlock
+                0x08003ed4       0x80 spy/qk_mutex.o
+                0x08003ed4                QMutex_unlock
  .text.QS_filterOn
-                0x08003ea8       0x50 spy/qs.o
-                0x08003ea8                QS_filterOn
+                0x08003f54       0x50 spy/qs.o
+                0x08003f54                QS_filterOn
  .text.QS_filterOff
-                0x08003ef8       0x5c spy/qs.o
-                0x08003ef8                QS_filterOff
+                0x08003fa4       0x5c spy/qs.o
+                0x08003fa4                QS_filterOff
  .text.QS_beginRec
-                0x08003f54       0x70 spy/qs.o
-                0x08003f54                QS_beginRec
+                0x08004000       0x70 spy/qs.o
+                0x08004000                QS_beginRec
  .text.QS_endRec
-                0x08003fc4       0x74 spy/qs.o
-                0x08003fc4                QS_endRec
- .text.QS_u8    0x08004038       0x9c spy/qs.o
-                0x08004038                QS_u8
- .text.QS_u32   0x080040d4       0xb0 spy/qs.o
-                0x080040d4                QS_u32
- .text.QS_u8_   0x08004184       0x60 spy/qs.o
-                0x08004184                QS_u8_
+                0x08004070       0x74 spy/qs.o
+                0x08004070                QS_endRec
+ .text.QS_u8    0x080040e4       0x9c spy/qs.o
+                0x080040e4                QS_u8
+ .text.QS_u32   0x08004180       0xb0 spy/qs.o
+                0x08004180                QS_u32
+ .text.QS_u8_   0x08004230       0x60 spy/qs.o
+                0x08004230                QS_u8_
  .text.QS_u8u8_
-                0x080041e4       0x9c spy/qs.o
-                0x080041e4                QS_u8u8_
- .text.QS_u16_  0x08004280       0xa0 spy/qs.o
-                0x08004280                QS_u16_
+                0x08004290       0x9c spy/qs.o
+                0x08004290                QS_u8u8_
+ .text.QS_u16_  0x0800432c       0xa0 spy/qs.o
+                0x0800432c                QS_u16_
  .text.QS_target_info_
-                0x08004320      0x160 spy/qs.o
-                0x08004320                QS_target_info_
+                0x080043cc      0x160 spy/qs.o
+                0x080043cc                QS_target_info_
  .text.QS_initBuf
-                0x08004480       0x58 spy/qs.o
-                0x08004480                QS_initBuf
- .text.QS_u32_  0x080044d8       0x74 spy/qs.o
-                0x080044d8                QS_u32_
- .text.QS_str_  0x0800454c       0x50 spy/qs.o
-                0x0800454c                QS_str_
+                0x0800452c       0x58 spy/qs.o
+                0x0800452c                QS_initBuf
+ .text.QS_u32_  0x08004584       0x74 spy/qs.o
+                0x08004584                QS_u32_
+ .text.QS_str_  0x080045f8       0x50 spy/qs.o
+                0x080045f8                QS_str_
  .text.QS_getByte
-                0x0800459c       0x2c spy/qs.o
-                0x0800459c                QS_getByte
+                0x08004648       0x2c spy/qs.o
+                0x08004648                QS_getByte
  .text.QS_sig_dict
-                0x080045c8       0x3e spy/qs.o
-                0x080045c8                QS_sig_dict
+                0x08004674       0x3e spy/qs.o
+                0x08004674                QS_sig_dict
  .text.QS_obj_dict
-                0x08004606       0x36 spy/qs.o
-                0x08004606                QS_obj_dict
+                0x080046b2       0x36 spy/qs.o
+                0x080046b2                QS_obj_dict
  .text.QS_fun_dict
-                0x0800463c       0x36 spy/qs.o
-                0x0800463c                QS_fun_dict
+                0x080046e8       0x36 spy/qs.o
+                0x080046e8                QS_fun_dict
  .text.QS_usr_dict
-                0x08004672       0x2e spy/qs.o
-                0x08004672                QS_usr_dict
- .text.QS_str   0x080046a0       0x5c spy/qs.o
-                0x080046a0                QS_str
+                0x0800471e       0x2e spy/qs.o
+                0x0800471e                QS_usr_dict
+ .text.QS_str   0x0800474c       0x5c spy/qs.o
+                0x0800474c                QS_str
  .text.QS_rxReportSuccess_
-                0x080046fc       0x3c spy/qs_rx.o
+                0x080047a8       0x3c spy/qs_rx.o
  .text.QS_rxReportError_
-                0x08004738       0x48 spy/qs_rx.o
+                0x080047e4       0x48 spy/qs_rx.o
  .text.QS_rxParseData_
-                0x08004780      0x304 spy/qs_rx.o
+                0x0800482c      0x304 spy/qs_rx.o
  .text.QS_rxInitBuf
-                0x08004a84       0x50 spy/qs_rx.o
-                0x08004a84                QS_rxInitBuf
+                0x08004b30       0x50 spy/qs_rx.o
+                0x08004b30                QS_rxInitBuf
  .text.QS_rxParse
-                0x08004ad4      0x2e0 spy/qs_rx.o
-                0x08004ad4                QS_rxParse
+                0x08004b80      0x2e0 spy/qs_rx.o
+                0x08004b80                QS_rxParse
  *(.rodata)
  *(.rodata*)
  .rodata.QS_onCommand.str1.4
-                0x08004db4        0xd spy/bsp.o
- *fill*         0x08004dc1        0x3 
+                0x08004e60        0xd spy/bsp.o
+ *fill*         0x08004e6d        0x3 
  .rodata.Q_this_module_
-                0x08004dc4        0x9 spy/bsp.o
+                0x08004e70        0x9 spy/bsp.o
  .rodata.l_GPIO_EVEN_IRQHandler
-                0x08004dcd        0x1 spy/bsp.o
+                0x08004e79        0x1 spy/bsp.o
  .rodata.l_SysTick_Handler
-                0x08004dce        0x1 spy/bsp.o
- *fill*         0x08004dcf        0x1 
+                0x08004e7a        0x1 spy/bsp.o
+ *fill*         0x08004e7b        0x1 
  .rodata.obj_name_.9952
-                0x08004dd0       0x13 spy/bsp.o
- *fill*         0x08004de3        0x1 
+                0x08004e7c       0x13 spy/bsp.o
+ *fill*         0x08004e8f        0x1 
  .rodata.obj_name_.9953
-                0x08004de4       0x18 spy/bsp.o
+                0x08004e90       0x18 spy/bsp.o
  .rodata.pauseEvt.9941
-                0x08004dfc        0x4 spy/bsp.o
+                0x08004ea8        0x4 spy/bsp.o
  .rodata.serveEvt.9942
-                0x08004e00        0x4 spy/bsp.o
+                0x08004eac        0x4 spy/bsp.o
  .rodata.usr_name_.9954
-                0x08004e04        0xb spy/bsp.o
- *fill*         0x08004e0f        0x1 
+                0x08004eb0        0xb spy/bsp.o
+ *fill*         0x08004ebb        0x1 
  .rodata.usr_name_.9955
-                0x08004e10        0xd spy/bsp.o
- *fill*         0x08004e1d        0x3 
+                0x08004ebc        0xd spy/bsp.o
+ *fill*         0x08004ec9        0x3 
  .rodata.obj_name_.5855
-                0x08004e20        0xb spy/main.o
- *fill*         0x08004e2b        0x1 
+                0x08004ecc        0xb spy/main.o
+ *fill*         0x08004ed7        0x1 
  .rodata.obj_name_.5856
-                0x08004e2c        0xe spy/main.o
- *fill*         0x08004e3a        0x2 
+                0x08004ed8        0xe spy/main.o
+ *fill*         0x08004ee6        0x2 
  .rodata.obj_name_.5857
-                0x08004e3c       0x11 spy/main.o
- *fill*         0x08004e4d        0x3 
+                0x08004ee8       0x11 spy/main.o
+ *fill*         0x08004ef9        0x3 
  .rodata.obj_name_.5858
-                0x08004e50       0x11 spy/main.o
- *fill*         0x08004e61        0x3 
+                0x08004efc       0x11 spy/main.o
+ *fill*         0x08004f0d        0x3 
  .rodata.obj_name_.5859
-                0x08004e64       0x11 spy/main.o
- *fill*         0x08004e75        0x3 
+                0x08004f10       0x11 spy/main.o
+ *fill*         0x08004f21        0x3 
  .rodata.obj_name_.5860
-                0x08004e78       0x11 spy/main.o
- *fill*         0x08004e89        0x3 
+                0x08004f24       0x11 spy/main.o
+ *fill*         0x08004f35        0x3 
  .rodata.obj_name_.5861
-                0x08004e8c       0x11 spy/main.o
- *fill*         0x08004e9d        0x3 
+                0x08004f38       0x11 spy/main.o
+ *fill*         0x08004f49        0x3 
  .rodata.AO_Philo
-                0x08004ea0       0x14 spy/philo.o
-                0x08004ea0                AO_Philo
+                0x08004f4c       0x14 spy/philo.o
+                0x08004f4c                AO_Philo
  .rodata.Q_this_module_
-                0x08004eb4        0xe spy/philo.o
- *fill*         0x08004ec2        0x2 
+                0x08004f60        0xe spy/philo.o
+ *fill*         0x08004f6e        0x2 
  .rodata.fun_name_.5888
-                0x08004ec4        0xf spy/philo.o
- *fill*         0x08004ed3        0x1 
+                0x08004f70        0xf spy/philo.o
+ *fill*         0x08004f7f        0x1 
  .rodata.fun_name_.5890
-                0x08004ed4       0x10 spy/philo.o
+                0x08004f80       0x10 spy/philo.o
  .rodata.fun_name_.5892
-                0x08004ee4        0xe spy/philo.o
- *fill*         0x08004ef2        0x2 
+                0x08004f90        0xe spy/philo.o
+ *fill*         0x08004f9e        0x2 
  .rodata.fun_name_.5894
-                0x08004ef4        0xe spy/philo.o
- *fill*         0x08004f02        0x2 
+                0x08004fa0        0xe spy/philo.o
+ *fill*         0x08004fae        0x2 
  .rodata.obj_name_.5878
-                0x08004f04        0xc spy/philo.o
- .rodata.obj_name_.5879
-                0x08004f10       0x14 spy/philo.o
- .rodata.obj_name_.5880
-                0x08004f24        0xc spy/philo.o
- .rodata.obj_name_.5881
-                0x08004f30       0x14 spy/philo.o
- .rodata.obj_name_.5882
-                0x08004f44        0xc spy/philo.o
- .rodata.obj_name_.5883
-                0x08004f50       0x14 spy/philo.o
- .rodata.obj_name_.5884
-                0x08004f64        0xc spy/philo.o
- .rodata.obj_name_.5885
-                0x08004f70       0x14 spy/philo.o
- .rodata.obj_name_.5886
-                0x08004f84        0xc spy/philo.o
- .rodata.obj_name_.5887
-                0x08004f90       0x14 spy/philo.o
- .rodata.sig_name_.5896
-                0x08004fa4        0xb spy/philo.o
- *fill*         0x08004faf        0x1 
- .rodata.sig_name_.5897
                 0x08004fb0        0xc spy/philo.o
- .rodata.AO_Table
-                0x08004fbc        0x4 spy/table.o
-                0x08004fbc                AO_Table
- .rodata.Q_this_module_
-                0x08004fc0        0xe spy/table.o
- *fill*         0x08004fce        0x2 
- .rodata.Table_initial.str1.4
-                0x08004fd0        0x9 spy/table.o
- *fill*         0x08004fd9        0x3 
- .rodata.Table_paused.str1.4
-                0x08004fdc        0x9 spy/table.o
- *fill*         0x08004fe5        0x3 
- .rodata.Table_serving.str1.4
-                0x08004fe8        0x9 spy/table.o
- *fill*         0x08004ff1        0x3 
- .rodata.fun_name_.5880
-                0x08004ff4        0xa spy/table.o
- *fill*         0x08004ffe        0x2 
- .rodata.fun_name_.5882
-                0x08005000        0xf spy/table.o
- *fill*         0x0800500f        0x1 
- .rodata.fun_name_.5884
-                0x08005010        0xe spy/table.o
- *fill*         0x0800501e        0x2 
- .rodata.fun_name_.5886
-                0x08005020        0xf spy/table.o
- *fill*         0x0800502f        0x1 
- .rodata.fun_name_.5888
-                0x08005030        0xe spy/table.o
- *fill*         0x0800503e        0x2 
  .rodata.obj_name_.5879
-                0x08005040        0x9 spy/table.o
- *fill*         0x08005049        0x3 
+                0x08004fbc       0x14 spy/philo.o
+ .rodata.obj_name_.5880
+                0x08004fd0        0xc spy/philo.o
+ .rodata.obj_name_.5881
+                0x08004fdc       0x14 spy/philo.o
+ .rodata.obj_name_.5882
+                0x08004ff0        0xc spy/philo.o
+ .rodata.obj_name_.5883
+                0x08004ffc       0x14 spy/philo.o
+ .rodata.obj_name_.5884
+                0x08005010        0xc spy/philo.o
+ .rodata.obj_name_.5885
+                0x0800501c       0x14 spy/philo.o
+ .rodata.obj_name_.5886
+                0x08005030        0xc spy/philo.o
+ .rodata.obj_name_.5887
+                0x0800503c       0x14 spy/philo.o
+ .rodata.sig_name_.5896
+                0x08005050        0xb spy/philo.o
+ *fill*         0x0800505b        0x1 
+ .rodata.sig_name_.5897
+                0x0800505c        0xc spy/philo.o
+ .rodata.AO_Table
+                0x08005068        0x4 spy/table.o
+                0x08005068                AO_Table
+ .rodata.Q_this_module_
+                0x0800506c        0xe spy/table.o
+ *fill*         0x0800507a        0x2 
+ .rodata.Table_initial.str1.4
+                0x0800507c        0x9 spy/table.o
+ *fill*         0x08005085        0x3 
+ .rodata.Table_paused.str1.4
+                0x08005088        0x9 spy/table.o
+ *fill*         0x08005091        0x3 
+ .rodata.Table_serving.str1.4
+                0x08005094        0x9 spy/table.o
+ *fill*         0x0800509d        0x3 
+ .rodata.fun_name_.5880
+                0x080050a0        0xa spy/table.o
+ *fill*         0x080050aa        0x2 
+ .rodata.fun_name_.5882
+                0x080050ac        0xf spy/table.o
+ *fill*         0x080050bb        0x1 
+ .rodata.fun_name_.5884
+                0x080050bc        0xe spy/table.o
+ *fill*         0x080050ca        0x2 
+ .rodata.fun_name_.5886
+                0x080050cc        0xf spy/table.o
+ *fill*         0x080050db        0x1 
+ .rodata.fun_name_.5888
+                0x080050dc        0xe spy/table.o
+ *fill*         0x080050ea        0x2 
+ .rodata.obj_name_.5879
+                0x080050ec        0x9 spy/table.o
+ *fill*         0x080050f5        0x3 
  .rodata.sig_name_.5890
-                0x0800504c        0x9 spy/table.o
- *fill*         0x08005055        0x3 
+                0x080050f8        0x9 spy/table.o
+ *fill*         0x08005101        0x3 
  .rodata.sig_name_.5891
-                0x08005058        0x8 spy/table.o
+                0x08005104        0x8 spy/table.o
  .rodata.sig_name_.5892
-                0x08005060        0xa spy/table.o
- *fill*         0x0800506a        0x2 
+                0x0800510c        0xa spy/table.o
+ *fill*         0x08005116        0x2 
  .rodata.sig_name_.5893
-                0x0800506c        0xa spy/table.o
- *fill*         0x08005076        0x2 
+                0x08005118        0xa spy/table.o
+ *fill*         0x08005122        0x2 
  .rodata.sig_name_.5894
-                0x08005078        0x9 spy/table.o
- *fill*         0x08005081        0x3 
+                0x08005124        0x9 spy/table.o
+ *fill*         0x0800512d        0x3 
  .rodata.sig_name_.5895
-                0x08005084        0xb spy/table.o
- *fill*         0x0800508f        0x1 
+                0x08005130        0xb spy/table.o
+ *fill*         0x0800513b        0x1 
  .rodata.Reset_Handler.str1.4
-                0x08005090       0x10 spy/startup_stm32f4xx.o
+                0x0800513c       0x10 spy/startup_stm32f4xx.o
                                   0xe (size before relaxing)
  .rodata.AHBPrescTable
-                0x080050a0       0x10 spy/system_stm32f7xx.o
-                0x080050a0                AHBPrescTable
+                0x0800514c       0x10 spy/system_stm32f7xx.o
+                0x0800514c                AHBPrescTable
  .rodata.APBPrescTable
-                0x080050b0        0x8 spy/system_stm32f7xx.o
-                0x080050b0                APBPrescTable
+                0x0800515c        0x8 spy/system_stm32f7xx.o
+                0x0800515c                APBPrescTable
  .rodata.BUTTON_IRQn
-                0x080050b8        0x6 spy/stm32746g_discovery.o
-                0x080050b8                BUTTON_IRQn
- *fill*         0x080050be        0x2 
+                0x08005164        0x6 spy/stm32746g_discovery.o
+                0x08005164                BUTTON_IRQn
+ *fill*         0x0800516a        0x2 
  .rodata.BUTTON_PIN
-                0x080050c0        0x6 spy/stm32746g_discovery.o
-                0x080050c0                BUTTON_PIN
- *fill*         0x080050c6        0x2 
+                0x0800516c        0x6 spy/stm32746g_discovery.o
+                0x0800516c                BUTTON_PIN
+ *fill*         0x08005172        0x2 
  .rodata.QEP_reservedEvt_
-                0x080050c8       0x10 spy/qep_hsm.o
+                0x08005174       0x10 spy/qep_hsm.o
  .rodata.Q_this_module_
-                0x080050d8        0x8 spy/qep_hsm.o
+                0x08005184        0x8 spy/qep_hsm.o
  .rodata.vtbl.5814
-                0x080050e0        0x8 spy/qep_hsm.o
+                0x0800518c        0x8 spy/qep_hsm.o
  .rodata.Q_this_module_
-                0x080050e8        0x7 spy/qf_act.o
- *fill*         0x080050ef        0x1 
+                0x08005194        0x7 spy/qf_act.o
+ *fill*         0x0800519b        0x1 
  .rodata.Q_this_module_
-                0x080050f0        0x8 spy/qf_actq.o
+                0x0800519c        0x8 spy/qf_actq.o
  .rodata.Q_this_module_
-                0x080050f8        0x7 spy/qf_dyn.o
- *fill*         0x080050ff        0x1 
+                0x080051a4        0x7 spy/qf_dyn.o
+ *fill*         0x080051ab        0x1 
  .rodata.Q_this_module_
-                0x08005100        0x7 spy/qf_mem.o
- *fill*         0x08005107        0x1 
+                0x080051ac        0x7 spy/qf_mem.o
+ *fill*         0x080051b3        0x1 
  .rodata.Q_this_module_
-                0x08005108        0x6 spy/qf_ps.o
- *fill*         0x0800510e        0x2 
+                0x080051b4        0x6 spy/qf_ps.o
+ *fill*         0x080051ba        0x2 
  .rodata.vtbl.5589
-                0x08005110       0x14 spy/qf_qact.o
+                0x080051bc       0x14 spy/qf_qact.o
  .rodata.Q_this_module_
-                0x08005124        0x8 spy/qf_time.o
+                0x080051d0        0x8 spy/qf_time.o
  .rodata.Q_this_module_
-                0x0800512c        0x3 spy/qk.o
- *fill*         0x0800512f        0x1 
+                0x080051d8        0x3 spy/qk.o
+ *fill*         0x080051db        0x1 
  .rodata.Q_this_module_
-                0x08005130        0x9 spy/qk_mutex.o
- *fill*         0x08005139        0x3 
+                0x080051dc        0x9 spy/qk_mutex.o
+ *fill*         0x080051e5        0x3 
  .rodata.Q_this_module_
-                0x0800513c        0x3 spy/qs.o
- *fill*         0x0800513f        0x1 
+                0x080051e8        0x3 spy/qs.o
+ *fill*         0x080051eb        0x1 
  .rodata.Q_this_module_
-                0x08005140        0x6 spy/qs_rx.o
+                0x080051ec        0x6 spy/qs_rx.o
  .rodata.l_QS_RX
-                0x08005146        0x1 spy/qs_rx.o
- *fill*         0x08005147        0x1 
+                0x080051f2        0x1 spy/qs_rx.o
+ *fill*         0x080051f3        0x1 
  .rodata.s_rxObjDic.5912
-                0x08005148        0x6 spy/qs_rx.o
- *fill*         0x0800514e        0x2 
+                0x080051f4        0x6 spy/qs_rx.o
+ *fill*         0x080051fa        0x2 
  .rodata.Q_BUILD_DATE
-                0x08005150        0xc spy/qstamp.o
-                0x08005150                Q_BUILD_DATE
+                0x080051fc        0xc spy/qstamp.o
+                0x080051fc                Q_BUILD_DATE
  .rodata.Q_BUILD_TIME
-                0x0800515c        0x9 spy/qstamp.o
-                0x0800515c                Q_BUILD_TIME
+                0x08005208        0x9 spy/qstamp.o
+                0x08005208                Q_BUILD_TIME
  *(.init)
  *(.fini)
-                0x08005168                . = ALIGN (0x4)
- *fill*         0x08005165        0x3 
+                0x08005214                . = ALIGN (0x4)
+ *fill*         0x08005211        0x3 
 
-.glue_7         0x08005168        0x0
- .glue_7        0x08005168        0x0 linker stubs
+.glue_7         0x08005214        0x0
+ .glue_7        0x08005214        0x0 linker stubs
 
-.glue_7t        0x08005168        0x0
- .glue_7t       0x08005168        0x0 linker stubs
+.glue_7t        0x08005214        0x0
+ .glue_7t       0x08005214        0x0 linker stubs
 
-.vfp11_veneer   0x08005168        0x0
- .vfp11_veneer  0x08005168        0x0 linker stubs
+.vfp11_veneer   0x08005214        0x0
+ .vfp11_veneer  0x08005214        0x0 linker stubs
 
-.v4_bx          0x08005168        0x0
- .v4_bx         0x08005168        0x0 linker stubs
+.v4_bx          0x08005214        0x0
+ .v4_bx         0x08005214        0x0 linker stubs
 
-.iplt           0x08005168        0x0
- .iplt          0x08005168        0x0 spy/qk_port.o
+.iplt           0x08005214        0x0
+ .iplt          0x08005214        0x0 spy/qk_port.o
 
-.rel.dyn        0x08005168        0x0
- .rel.iplt      0x08005168        0x0 spy/qk_port.o
+.rel.dyn        0x08005214        0x0
+ .rel.iplt      0x08005214        0x0 spy/qk_port.o
 
-.preinit_array  0x08005168        0x0
-                0x08005168                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x08005214        0x0
+                0x08005214                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x08005168                PROVIDE (__preinit_array_end, .)
+                0x08005214                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x08005168        0x0
-                0x08005168                PROVIDE (__init_array_start, .)
+.init_array     0x08005214        0x0
+                0x08005214                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
-                0x08005168                PROVIDE (__init_array_end, .)
+                0x08005214                PROVIDE (__init_array_end, .)
 
-.fini_array     0x08005168        0x0
+.fini_array     0x08005214        0x0
                 [!provide]                PROVIDE (__fini_array_start, .)
  *(.fini_array*)
  *(SORT(.fini_array.*))
                 [!provide]                PROVIDE (__fini_array_end, .)
-                0x08005168                _etext = .
+                0x08005214                _etext = .
 
 .stack          0x20000000      0x400
                 0x20000000                __stack_start__ = .
@@ -1328,8 +1332,8 @@ LOAD spy/qstamp.o
                 0x20000400                . = ALIGN (0x4)
                 0x20000400                __stack_end__ = .
 
-.data           0x20000400       0x18 load address 0x08005168
-                0x08005168                __data_load = LOADADDR (.data)
+.data           0x20000400       0x18 load address 0x08005214
+                0x08005214                __data_load = LOADADDR (.data)
                 0x20000400                __data_start = .
  *(.data)
  *(.data*)
@@ -1345,10 +1349,10 @@ LOAD spy/qstamp.o
                 0x20000418                __data_end__ = .
                 0x20000418                _edata = __data_end__
 
-.igot.plt       0x20000418        0x0 load address 0x08005180
+.igot.plt       0x20000418        0x0 load address 0x0800522c
  .igot.plt      0x20000418        0x0 spy/qk_port.o
 
-.bss            0x20000418      0xcac load address 0x08005180
+.bss            0x20000418      0xcac load address 0x0800522c
                 0x20000418                __bss_start__ = .
  *(.bss)
  *(.bss*)
@@ -1357,9 +1361,9 @@ LOAD spy/qstamp.o
                 0x2000041c        0x8 spy/bsp.o
  .bss.l_uartHandle
                 0x20000424       0x70 spy/bsp.o
- .bss.qsRxBuf.9997
+ .bss.qsRxBuf.10002
                 0x20000494       0x64 spy/bsp.o
- .bss.qsTxBuf.9996
+ .bss.qsTxBuf.10001
                 0x200004f8      0x800 spy/bsp.o
  .bss.philoQueueSto.5849
                 0x20000cf8       0x64 spy/main.o
@@ -1508,69 +1512,69 @@ OUTPUT(spy/dpp-qk.elf elf32-littlearm)
  .comment       0x00000011       0x12 spy/qs_rx.o
  .comment       0x00000011       0x12 spy/qstamp.o
 
-.debug_line     0x00000000     0x650b
+.debug_line     0x00000000     0x6533
  .debug_line    0x00000000       0xe1 spy/qk_port.o
- .debug_line    0x000000e1      0x67e spy/bsp.o
- .debug_line    0x0000075f      0x19f spy/main.o
- .debug_line    0x000008fe      0x281 spy/philo.o
- .debug_line    0x00000b7f      0x304 spy/table.o
- .debug_line    0x00000e83      0x134 spy/startup_stm32f4xx.o
- .debug_line    0x00000fb7      0x17d spy/system_stm32f7xx.o
- .debug_line    0x00001134      0x5c2 spy/stm32746g_discovery.o
- .debug_line    0x000016f6      0x3fc spy/stm32f7xx_hal.o
- .debug_line    0x00001af2      0x489 spy/stm32f7xx_hal_cortex.o
- .debug_line    0x00001f7b      0x43b spy/stm32f7xx_hal_gpio.o
- .debug_line    0x000023b6      0x39f spy/stm32f7xx_hal_pwr_ex.o
- .debug_line    0x00002755      0x5dc spy/stm32f7xx_hal_rcc.o
- .debug_line    0x00002d31      0x279 spy/stm32f7xx_hal_msp.o
- .debug_line    0x00002faa      0xba3 spy/stm32f7xx_hal_uart.o
- .debug_line    0x00003b4d      0x4b2 spy/qep_hsm.o
- .debug_line    0x00003fff      0x201 spy/qf_act.o
- .debug_line    0x00004200      0x42e spy/qf_actq.o
- .debug_line    0x0000462e      0x25d spy/qf_dyn.o
- .debug_line    0x0000488b      0x2d9 spy/qf_mem.o
- .debug_line    0x00004b64      0x308 spy/qf_ps.o
- .debug_line    0x00004e6c      0x14e spy/qf_qact.o
- .debug_line    0x00004fba      0x31c spy/qf_qeq.o
- .debug_line    0x000052d6      0x3e6 spy/qf_time.o
- .debug_line    0x000056bc      0x2e8 spy/qk.o
- .debug_line    0x000059a4      0x232 spy/qk_mutex.o
- .debug_line    0x00005bd6      0x4eb spy/qs.o
- .debug_line    0x000060c1      0x317 spy/qs_rx.o
- .debug_line    0x000063d8      0x133 spy/qstamp.o
+ .debug_line    0x000000e1      0x68a spy/bsp.o
+ .debug_line    0x0000076b      0x19f spy/main.o
+ .debug_line    0x0000090a      0x281 spy/philo.o
+ .debug_line    0x00000b8b      0x304 spy/table.o
+ .debug_line    0x00000e8f      0x134 spy/startup_stm32f4xx.o
+ .debug_line    0x00000fc3      0x17d spy/system_stm32f7xx.o
+ .debug_line    0x00001140      0x5c2 spy/stm32746g_discovery.o
+ .debug_line    0x00001702      0x3fc spy/stm32f7xx_hal.o
+ .debug_line    0x00001afe      0x489 spy/stm32f7xx_hal_cortex.o
+ .debug_line    0x00001f87      0x43b spy/stm32f7xx_hal_gpio.o
+ .debug_line    0x000023c2      0x39f spy/stm32f7xx_hal_pwr_ex.o
+ .debug_line    0x00002761      0x5dc spy/stm32f7xx_hal_rcc.o
+ .debug_line    0x00002d3d      0x295 spy/stm32f7xx_hal_msp.o
+ .debug_line    0x00002fd2      0xba3 spy/stm32f7xx_hal_uart.o
+ .debug_line    0x00003b75      0x4b2 spy/qep_hsm.o
+ .debug_line    0x00004027      0x201 spy/qf_act.o
+ .debug_line    0x00004228      0x42e spy/qf_actq.o
+ .debug_line    0x00004656      0x25d spy/qf_dyn.o
+ .debug_line    0x000048b3      0x2d9 spy/qf_mem.o
+ .debug_line    0x00004b8c      0x308 spy/qf_ps.o
+ .debug_line    0x00004e94      0x14e spy/qf_qact.o
+ .debug_line    0x00004fe2      0x31c spy/qf_qeq.o
+ .debug_line    0x000052fe      0x3e6 spy/qf_time.o
+ .debug_line    0x000056e4      0x2e8 spy/qk.o
+ .debug_line    0x000059cc      0x232 spy/qk_mutex.o
+ .debug_line    0x00005bfe      0x4eb spy/qs.o
+ .debug_line    0x000060e9      0x317 spy/qs_rx.o
+ .debug_line    0x00006400      0x133 spy/qstamp.o
 
-.debug_info     0x00000000    0x1f405
+.debug_info     0x00000000    0x1f707
  .debug_info    0x00000000       0xb1 spy/qk_port.o
- .debug_info    0x000000b1     0x2fc6 spy/bsp.o
- .debug_info    0x00003077      0xd58 spy/main.o
- .debug_info    0x00003dcf     0x12a5 spy/philo.o
- .debug_info    0x00005074     0x12e7 spy/table.o
- .debug_info    0x0000635b      0x26c spy/startup_stm32f4xx.o
- .debug_info    0x000065c7      0x6ec spy/system_stm32f7xx.o
- .debug_info    0x00006cb3     0x2898 spy/stm32746g_discovery.o
- .debug_info    0x0000954b     0x11cc spy/stm32f7xx_hal.o
- .debug_info    0x0000a717     0x197e spy/stm32f7xx_hal_cortex.o
- .debug_info    0x0000c095      0xfb4 spy/stm32f7xx_hal_gpio.o
- .debug_info    0x0000d049     0x120f spy/stm32f7xx_hal_pwr_ex.o
- .debug_info    0x0000e258     0x14ee spy/stm32f7xx_hal_rcc.o
- .debug_info    0x0000f746     0x1263 spy/stm32f7xx_hal_msp.o
- .debug_info    0x000109a9     0x2074 spy/stm32f7xx_hal_uart.o
- .debug_info    0x00012a1d     0x155d spy/qep_hsm.o
- .debug_info    0x00013f7a      0xb56 spy/qf_act.o
- .debug_info    0x00014ad0     0x1232 spy/qf_actq.o
- .debug_info    0x00015d02      0xd3c spy/qf_dyn.o
- .debug_info    0x00016a3e      0xd1f spy/qf_mem.o
- .debug_info    0x0001775d      0xf3e spy/qf_ps.o
- .debug_info    0x0001869b      0x60d spy/qf_qact.o
- .debug_info    0x00018ca8      0xde8 spy/qf_qeq.o
- .debug_info    0x00019a90     0x10f8 spy/qf_time.o
- .debug_info    0x0001ab88      0xe94 spy/qk.o
- .debug_info    0x0001ba1c      0xbc3 spy/qk_mutex.o
- .debug_info    0x0001c5df     0x14a5 spy/qs.o
- .debug_info    0x0001da84     0x12fe spy/qs_rx.o
- .debug_info    0x0001ed82      0x683 spy/qstamp.o
+ .debug_info    0x000000b1     0x2fcf spy/bsp.o
+ .debug_info    0x00003080      0xd58 spy/main.o
+ .debug_info    0x00003dd8     0x12a5 spy/philo.o
+ .debug_info    0x0000507d     0x12e7 spy/table.o
+ .debug_info    0x00006364      0x26c spy/startup_stm32f4xx.o
+ .debug_info    0x000065d0      0x6ec spy/system_stm32f7xx.o
+ .debug_info    0x00006cbc     0x2898 spy/stm32746g_discovery.o
+ .debug_info    0x00009554     0x11cc spy/stm32f7xx_hal.o
+ .debug_info    0x0000a720     0x197e spy/stm32f7xx_hal_cortex.o
+ .debug_info    0x0000c09e      0xfb4 spy/stm32f7xx_hal_gpio.o
+ .debug_info    0x0000d052     0x120f spy/stm32f7xx_hal_pwr_ex.o
+ .debug_info    0x0000e261     0x14ee spy/stm32f7xx_hal_rcc.o
+ .debug_info    0x0000f74f     0x155c spy/stm32f7xx_hal_msp.o
+ .debug_info    0x00010cab     0x2074 spy/stm32f7xx_hal_uart.o
+ .debug_info    0x00012d1f     0x155d spy/qep_hsm.o
+ .debug_info    0x0001427c      0xb56 spy/qf_act.o
+ .debug_info    0x00014dd2     0x1232 spy/qf_actq.o
+ .debug_info    0x00016004      0xd3c spy/qf_dyn.o
+ .debug_info    0x00016d40      0xd1f spy/qf_mem.o
+ .debug_info    0x00017a5f      0xf3e spy/qf_ps.o
+ .debug_info    0x0001899d      0x60d spy/qf_qact.o
+ .debug_info    0x00018faa      0xde8 spy/qf_qeq.o
+ .debug_info    0x00019d92     0x10f8 spy/qf_time.o
+ .debug_info    0x0001ae8a      0xe94 spy/qk.o
+ .debug_info    0x0001bd1e      0xbc3 spy/qk_mutex.o
+ .debug_info    0x0001c8e1     0x14a5 spy/qs.o
+ .debug_info    0x0001dd86     0x12fe spy/qs_rx.o
+ .debug_info    0x0001f084      0x683 spy/qstamp.o
 
-.debug_abbrev   0x00000000     0x4b9d
+.debug_abbrev   0x00000000     0x4bb7
  .debug_abbrev  0x00000000       0x12 spy/qk_port.o
  .debug_abbrev  0x00000012      0x48d spy/bsp.o
  .debug_abbrev  0x0000049f      0x20f spy/main.o
@@ -1584,228 +1588,228 @@ OUTPUT(spy/dpp-qk.elf elf32-littlearm)
  .debug_abbrev  0x00001875      0x2a0 spy/stm32f7xx_hal_gpio.o
  .debug_abbrev  0x00001b15      0x2b8 spy/stm32f7xx_hal_pwr_ex.o
  .debug_abbrev  0x00001dcd      0x33c spy/stm32f7xx_hal_rcc.o
- .debug_abbrev  0x00002109      0x235 spy/stm32f7xx_hal_msp.o
- .debug_abbrev  0x0000233e      0x379 spy/stm32f7xx_hal_uart.o
- .debug_abbrev  0x000026b7      0x35f spy/qep_hsm.o
- .debug_abbrev  0x00002a16      0x225 spy/qf_act.o
- .debug_abbrev  0x00002c3b      0x35c spy/qf_actq.o
- .debug_abbrev  0x00002f97      0x29c spy/qf_dyn.o
- .debug_abbrev  0x00003233      0x282 spy/qf_mem.o
- .debug_abbrev  0x000034b5      0x2cf spy/qf_ps.o
- .debug_abbrev  0x00003784      0x1cf spy/qf_qact.o
- .debug_abbrev  0x00003953      0x280 spy/qf_qeq.o
- .debug_abbrev  0x00003bd3      0x302 spy/qf_time.o
- .debug_abbrev  0x00003ed5      0x2b8 spy/qk.o
- .debug_abbrev  0x0000418d      0x268 spy/qk_mutex.o
- .debug_abbrev  0x000043f5      0x300 spy/qs.o
- .debug_abbrev  0x000046f5      0x34e spy/qs_rx.o
- .debug_abbrev  0x00004a43      0x15a spy/qstamp.o
+ .debug_abbrev  0x00002109      0x24f spy/stm32f7xx_hal_msp.o
+ .debug_abbrev  0x00002358      0x379 spy/stm32f7xx_hal_uart.o
+ .debug_abbrev  0x000026d1      0x35f spy/qep_hsm.o
+ .debug_abbrev  0x00002a30      0x225 spy/qf_act.o
+ .debug_abbrev  0x00002c55      0x35c spy/qf_actq.o
+ .debug_abbrev  0x00002fb1      0x29c spy/qf_dyn.o
+ .debug_abbrev  0x0000324d      0x282 spy/qf_mem.o
+ .debug_abbrev  0x000034cf      0x2cf spy/qf_ps.o
+ .debug_abbrev  0x0000379e      0x1cf spy/qf_qact.o
+ .debug_abbrev  0x0000396d      0x280 spy/qf_qeq.o
+ .debug_abbrev  0x00003bed      0x302 spy/qf_time.o
+ .debug_abbrev  0x00003eef      0x2b8 spy/qk.o
+ .debug_abbrev  0x000041a7      0x268 spy/qk_mutex.o
+ .debug_abbrev  0x0000440f      0x300 spy/qs.o
+ .debug_abbrev  0x0000470f      0x34e spy/qs_rx.o
+ .debug_abbrev  0x00004a5d      0x15a spy/qstamp.o
 
-.debug_aranges  0x00000000      0xb78
+.debug_aranges  0x00000000      0xb80
  .debug_aranges
                 0x00000000       0x38 spy/qk_port.o
  .debug_aranges
-                0x00000038       0xa8 spy/bsp.o
+                0x00000038       0xb0 spy/bsp.o
  .debug_aranges
-                0x000000e0       0x20 spy/main.o
+                0x000000e8       0x20 spy/main.o
  .debug_aranges
-                0x00000100       0x40 spy/philo.o
+                0x00000108       0x40 spy/philo.o
  .debug_aranges
-                0x00000140       0x40 spy/table.o
+                0x00000148       0x40 spy/table.o
  .debug_aranges
-                0x00000180       0x68 spy/startup_stm32f4xx.o
+                0x00000188       0x68 spy/startup_stm32f4xx.o
  .debug_aranges
-                0x000001e8       0x28 spy/system_stm32f7xx.o
+                0x000001f0       0x28 spy/system_stm32f7xx.o
  .debug_aranges
-                0x00000210      0x110 spy/stm32746g_discovery.o
+                0x00000218      0x110 spy/stm32746g_discovery.o
  .debug_aranges
-                0x00000320       0xd0 spy/stm32f7xx_hal.o
+                0x00000328       0xd0 spy/stm32f7xx_hal.o
  .debug_aranges
-                0x000003f0       0xa8 spy/stm32f7xx_hal_cortex.o
+                0x000003f8       0xa8 spy/stm32f7xx_hal_cortex.o
  .debug_aranges
-                0x00000498       0x58 spy/stm32f7xx_hal_gpio.o
+                0x000004a0       0x58 spy/stm32f7xx_hal_gpio.o
  .debug_aranges
-                0x000004f0       0x80 spy/stm32f7xx_hal_pwr_ex.o
+                0x000004f8       0x80 spy/stm32f7xx_hal_pwr_ex.o
  .debug_aranges
-                0x00000570       0x88 spy/stm32f7xx_hal_rcc.o
+                0x00000578       0x88 spy/stm32f7xx_hal_rcc.o
  .debug_aranges
-                0x000005f8       0x28 spy/stm32f7xx_hal_msp.o
+                0x00000600       0x28 spy/stm32f7xx_hal_msp.o
  .debug_aranges
-                0x00000620      0x178 spy/stm32f7xx_hal_uart.o
+                0x00000628      0x178 spy/stm32f7xx_hal_uart.o
  .debug_aranges
-                0x00000798       0x48 spy/qep_hsm.o
+                0x000007a0       0x48 spy/qep_hsm.o
  .debug_aranges
-                0x000007e0       0x30 spy/qf_act.o
+                0x000007e8       0x30 spy/qf_act.o
  .debug_aranges
-                0x00000810       0x60 spy/qf_actq.o
+                0x00000818       0x60 spy/qf_actq.o
  .debug_aranges
-                0x00000870       0x40 spy/qf_dyn.o
+                0x00000878       0x40 spy/qf_dyn.o
  .debug_aranges
-                0x000008b0       0x38 spy/qf_mem.o
+                0x000008b8       0x38 spy/qf_mem.o
  .debug_aranges
-                0x000008e8       0x40 spy/qf_ps.o
+                0x000008f0       0x40 spy/qf_ps.o
  .debug_aranges
-                0x00000928       0x20 spy/qf_qact.o
+                0x00000930       0x20 spy/qf_qact.o
  .debug_aranges
-                0x00000948       0x38 spy/qf_qeq.o
+                0x00000950       0x38 spy/qf_qeq.o
  .debug_aranges
-                0x00000980       0x50 spy/qf_time.o
+                0x00000988       0x50 spy/qf_time.o
  .debug_aranges
-                0x000009d0       0x50 spy/qk.o
+                0x000009d8       0x50 spy/qk.o
  .debug_aranges
-                0x00000a20       0x30 spy/qk_mutex.o
+                0x00000a28       0x30 spy/qk_mutex.o
  .debug_aranges
-                0x00000a50       0xc8 spy/qs.o
+                0x00000a58       0xc8 spy/qs.o
  .debug_aranges
-                0x00000b18       0x48 spy/qs_rx.o
+                0x00000b20       0x48 spy/qs_rx.o
  .debug_aranges
-                0x00000b60       0x18 spy/qstamp.o
+                0x00000b68       0x18 spy/qstamp.o
 
-.debug_ranges   0x00000000      0xb98
+.debug_ranges   0x00000000      0xba0
  .debug_ranges  0x00000000       0x30 spy/qk_port.o
- .debug_ranges  0x00000030       0xb0 spy/bsp.o
- .debug_ranges  0x000000e0       0x10 spy/main.o
- .debug_ranges  0x000000f0       0x30 spy/philo.o
- .debug_ranges  0x00000120       0x60 spy/table.o
- .debug_ranges  0x00000180       0x58 spy/startup_stm32f4xx.o
- .debug_ranges  0x000001d8       0x18 spy/system_stm32f7xx.o
- .debug_ranges  0x000001f0      0x118 spy/stm32746g_discovery.o
- .debug_ranges  0x00000308       0xc0 spy/stm32f7xx_hal.o
- .debug_ranges  0x000003c8       0xc8 spy/stm32f7xx_hal_cortex.o
- .debug_ranges  0x00000490       0x60 spy/stm32f7xx_hal_gpio.o
- .debug_ranges  0x000004f0       0x70 spy/stm32f7xx_hal_pwr_ex.o
- .debug_ranges  0x00000560       0x78 spy/stm32f7xx_hal_rcc.o
- .debug_ranges  0x000005d8       0x18 spy/stm32f7xx_hal_msp.o
- .debug_ranges  0x000005f0      0x168 spy/stm32f7xx_hal_uart.o
- .debug_ranges  0x00000758       0x98 spy/qep_hsm.o
- .debug_ranges  0x000007f0       0x20 spy/qf_act.o
- .debug_ranges  0x00000810       0x50 spy/qf_actq.o
- .debug_ranges  0x00000860       0x30 spy/qf_dyn.o
- .debug_ranges  0x00000890       0x28 spy/qf_mem.o
- .debug_ranges  0x000008b8       0x48 spy/qf_ps.o
- .debug_ranges  0x00000900       0x10 spy/qf_qact.o
- .debug_ranges  0x00000910       0x40 spy/qf_qeq.o
- .debug_ranges  0x00000950       0x70 spy/qf_time.o
- .debug_ranges  0x000009c0       0x78 spy/qk.o
- .debug_ranges  0x00000a38       0x20 spy/qk_mutex.o
- .debug_ranges  0x00000a58       0xd0 spy/qs.o
- .debug_ranges  0x00000b28       0x70 spy/qs_rx.o
+ .debug_ranges  0x00000030       0xb8 spy/bsp.o
+ .debug_ranges  0x000000e8       0x10 spy/main.o
+ .debug_ranges  0x000000f8       0x30 spy/philo.o
+ .debug_ranges  0x00000128       0x60 spy/table.o
+ .debug_ranges  0x00000188       0x58 spy/startup_stm32f4xx.o
+ .debug_ranges  0x000001e0       0x18 spy/system_stm32f7xx.o
+ .debug_ranges  0x000001f8      0x118 spy/stm32746g_discovery.o
+ .debug_ranges  0x00000310       0xc0 spy/stm32f7xx_hal.o
+ .debug_ranges  0x000003d0       0xc8 spy/stm32f7xx_hal_cortex.o
+ .debug_ranges  0x00000498       0x60 spy/stm32f7xx_hal_gpio.o
+ .debug_ranges  0x000004f8       0x70 spy/stm32f7xx_hal_pwr_ex.o
+ .debug_ranges  0x00000568       0x78 spy/stm32f7xx_hal_rcc.o
+ .debug_ranges  0x000005e0       0x18 spy/stm32f7xx_hal_msp.o
+ .debug_ranges  0x000005f8      0x168 spy/stm32f7xx_hal_uart.o
+ .debug_ranges  0x00000760       0x98 spy/qep_hsm.o
+ .debug_ranges  0x000007f8       0x20 spy/qf_act.o
+ .debug_ranges  0x00000818       0x50 spy/qf_actq.o
+ .debug_ranges  0x00000868       0x30 spy/qf_dyn.o
+ .debug_ranges  0x00000898       0x28 spy/qf_mem.o
+ .debug_ranges  0x000008c0       0x48 spy/qf_ps.o
+ .debug_ranges  0x00000908       0x10 spy/qf_qact.o
+ .debug_ranges  0x00000918       0x40 spy/qf_qeq.o
+ .debug_ranges  0x00000958       0x70 spy/qf_time.o
+ .debug_ranges  0x000009c8       0x78 spy/qk.o
+ .debug_ranges  0x00000a40       0x20 spy/qk_mutex.o
+ .debug_ranges  0x00000a60       0xd0 spy/qs.o
+ .debug_ranges  0x00000b30       0x70 spy/qs_rx.o
 
-.debug_loc      0x00000000     0x6efb
- .debug_loc     0x00000000      0x3b8 spy/bsp.o
- .debug_loc     0x000003b8       0x2c spy/main.o
- .debug_loc     0x000003e4      0x449 spy/philo.o
- .debug_loc     0x0000082d      0x633 spy/table.o
- .debug_loc     0x00000e60       0x8b spy/startup_stm32f4xx.o
- .debug_loc     0x00000eeb      0x166 spy/system_stm32f7xx.o
- .debug_loc     0x00001051      0x89d spy/stm32746g_discovery.o
- .debug_loc     0x000018ee       0x6a spy/stm32f7xx_hal.o
- .debug_loc     0x00001958      0x589 spy/stm32f7xx_hal_cortex.o
- .debug_loc     0x00001ee1      0x462 spy/stm32f7xx_hal_gpio.o
- .debug_loc     0x00002343      0x232 spy/stm32f7xx_hal_pwr_ex.o
- .debug_loc     0x00002575      0x616 spy/stm32f7xx_hal_rcc.o
- .debug_loc     0x00002b8b       0x4d spy/stm32f7xx_hal_msp.o
- .debug_loc     0x00002bd8     0x151c spy/stm32f7xx_hal_uart.o
- .debug_loc     0x000040f4      0x745 spy/qep_hsm.o
- .debug_loc     0x00004839       0xa6 spy/qf_act.o
- .debug_loc     0x000048df      0x3cb spy/qf_actq.o
- .debug_loc     0x00004caa      0x29e spy/qf_dyn.o
- .debug_loc     0x00004f48      0x261 spy/qf_mem.o
- .debug_loc     0x000051a9      0x279 spy/qf_ps.o
- .debug_loc     0x00005422       0x58 spy/qf_qact.o
- .debug_loc     0x0000547a      0x1ff spy/qf_qeq.o
- .debug_loc     0x00005679      0x39b spy/qf_time.o
- .debug_loc     0x00005a14      0x1f1 spy/qk.o
- .debug_loc     0x00005c05       0x5a spy/qk_mutex.o
- .debug_loc     0x00005c5f      0xede spy/qs.o
- .debug_loc     0x00006b3d      0x3be spy/qs_rx.o
+.debug_loc      0x00000000     0x6eb2
+ .debug_loc     0x00000000      0x37a spy/bsp.o
+ .debug_loc     0x0000037a       0x2c spy/main.o
+ .debug_loc     0x000003a6      0x449 spy/philo.o
+ .debug_loc     0x000007ef      0x633 spy/table.o
+ .debug_loc     0x00000e22       0x8b spy/startup_stm32f4xx.o
+ .debug_loc     0x00000ead      0x166 spy/system_stm32f7xx.o
+ .debug_loc     0x00001013      0x89d spy/stm32746g_discovery.o
+ .debug_loc     0x000018b0       0x6a spy/stm32f7xx_hal.o
+ .debug_loc     0x0000191a      0x589 spy/stm32f7xx_hal_cortex.o
+ .debug_loc     0x00001ea3      0x462 spy/stm32f7xx_hal_gpio.o
+ .debug_loc     0x00002305      0x232 spy/stm32f7xx_hal_pwr_ex.o
+ .debug_loc     0x00002537      0x616 spy/stm32f7xx_hal_rcc.o
+ .debug_loc     0x00002b4d       0x42 spy/stm32f7xx_hal_msp.o
+ .debug_loc     0x00002b8f     0x151c spy/stm32f7xx_hal_uart.o
+ .debug_loc     0x000040ab      0x745 spy/qep_hsm.o
+ .debug_loc     0x000047f0       0xa6 spy/qf_act.o
+ .debug_loc     0x00004896      0x3cb spy/qf_actq.o
+ .debug_loc     0x00004c61      0x29e spy/qf_dyn.o
+ .debug_loc     0x00004eff      0x261 spy/qf_mem.o
+ .debug_loc     0x00005160      0x279 spy/qf_ps.o
+ .debug_loc     0x000053d9       0x58 spy/qf_qact.o
+ .debug_loc     0x00005431      0x1ff spy/qf_qeq.o
+ .debug_loc     0x00005630      0x39b spy/qf_time.o
+ .debug_loc     0x000059cb      0x1f1 spy/qk.o
+ .debug_loc     0x00005bbc       0x5a spy/qk_mutex.o
+ .debug_loc     0x00005c16      0xede spy/qs.o
+ .debug_loc     0x00006af4      0x3be spy/qs_rx.o
 
-.debug_str      0x00000000     0x47bd
- .debug_str     0x00000000     0x2002 spy/bsp.o
-                               0x2171 (size before relaxing)
- .debug_str     0x00002002       0x98 spy/main.o
+.debug_str      0x00000000     0x47c8
+ .debug_str     0x00000000     0x2028 spy/bsp.o
+                               0x2197 (size before relaxing)
+ .debug_str     0x00002028       0x98 spy/main.o
                                 0xa28 (size before relaxing)
- .debug_str     0x0000209a      0x1ca spy/philo.o
+ .debug_str     0x000020c0      0x1ca spy/philo.o
                                 0xbd7 (size before relaxing)
- .debug_str     0x00002264       0x5a spy/table.o
+ .debug_str     0x0000228a       0x5a spy/table.o
                                 0xb7c (size before relaxing)
- .debug_str     0x000022be      0x143 spy/startup_stm32f4xx.o
+ .debug_str     0x000022e4      0x143 spy/startup_stm32f4xx.o
                                 0x258 (size before relaxing)
- .debug_str     0x00002401      0x13d spy/system_stm32f7xx.o
+ .debug_str     0x00002427      0x13d spy/system_stm32f7xx.o
                                 0x47d (size before relaxing)
- .debug_str     0x0000253e      0x770 spy/stm32746g_discovery.o
+ .debug_str     0x00002564      0x770 spy/stm32746g_discovery.o
                                0x19d7 (size before relaxing)
- .debug_str     0x00002cae      0x2c1 spy/stm32f7xx_hal.o
+ .debug_str     0x00002cd4      0x2c1 spy/stm32f7xx_hal.o
                                 0xfdc (size before relaxing)
- .debug_str     0x00002f6f      0x375 spy/stm32f7xx_hal_cortex.o
+ .debug_str     0x00002f95      0x386 spy/stm32f7xx_hal_cortex.o
                                0x11e2 (size before relaxing)
- .debug_str     0x000032e4       0xfb spy/stm32f7xx_hal_gpio.o
+ .debug_str     0x0000331b       0xfb spy/stm32f7xx_hal_gpio.o
                                 0x944 (size before relaxing)
- .debug_str     0x000033df      0x21c spy/stm32f7xx_hal_pwr_ex.o
+ .debug_str     0x00003416      0x21c spy/stm32f7xx_hal_pwr_ex.o
                                 0xa93 (size before relaxing)
- .debug_str     0x000035fb      0x1bc spy/stm32f7xx_hal_rcc.o
+ .debug_str     0x00003632      0x1bc spy/stm32f7xx_hal_rcc.o
                                 0xb12 (size before relaxing)
- .debug_str     0x000037b7       0x3e spy/stm32f7xx_hal_msp.o
-                                0xc74 (size before relaxing)
- .debug_str     0x000037f5      0x581 spy/stm32f7xx_hal_uart.o
+ .debug_str     0x000037ee       0x3e spy/stm32f7xx_hal_msp.o
+                               0x1253 (size before relaxing)
+ .debug_str     0x0000382c      0x555 spy/stm32f7xx_hal_uart.o
                                0x1256 (size before relaxing)
- .debug_str     0x00003d76       0xd4 spy/qep_hsm.o
+ .debug_str     0x00003d81       0xd4 spy/qep_hsm.o
                                 0xad1 (size before relaxing)
- .debug_str     0x00003e4a       0xc3 spy/qf_act.o
+ .debug_str     0x00003e55       0xc3 spy/qf_act.o
                                 0x9f3 (size before relaxing)
- .debug_str     0x00003f0d      0x100 spy/qf_actq.o
+ .debug_str     0x00003f18      0x100 spy/qf_actq.o
                                 0xb07 (size before relaxing)
- .debug_str     0x0000400d       0x91 spy/qf_dyn.o
+ .debug_str     0x00004018       0x91 spy/qf_dyn.o
                                 0xa75 (size before relaxing)
- .debug_str     0x0000409e       0x4f spy/qf_mem.o
+ .debug_str     0x000040a9       0x4f spy/qf_mem.o
                                 0xa50 (size before relaxing)
- .debug_str     0x000040ed       0x69 spy/qf_ps.o
+ .debug_str     0x000040f8       0x69 spy/qf_ps.o
                                 0xb04 (size before relaxing)
- .debug_str     0x00004156       0x20 spy/qf_qact.o
+ .debug_str     0x00004161       0x20 spy/qf_qact.o
                                 0x3c4 (size before relaxing)
- .debug_str     0x00004176       0x60 spy/qf_qeq.o
+ .debug_str     0x00004181       0x60 spy/qf_qeq.o
                                 0xa37 (size before relaxing)
- .debug_str     0x000041d6       0x72 spy/qf_time.o
+ .debug_str     0x000041e1       0x72 spy/qf_time.o
                                 0xace (size before relaxing)
- .debug_str     0x00004248       0x6b spy/qk.o
+ .debug_str     0x00004253       0x6b spy/qk.o
                                 0xac7 (size before relaxing)
- .debug_str     0x000042b3       0x2e spy/qk_mutex.o
+ .debug_str     0x000042be       0x2e spy/qk_mutex.o
                                 0xa49 (size before relaxing)
- .debug_str     0x000042e1       0x90 spy/qs.o
+ .debug_str     0x000042ec       0x90 spy/qs.o
                                 0xab9 (size before relaxing)
- .debug_str     0x00004371      0x42c spy/qs_rx.o
+ .debug_str     0x0000437c      0x42c spy/qs_rx.o
                                 0xdf8 (size before relaxing)
- .debug_str     0x0000479d       0x20 spy/qstamp.o
+ .debug_str     0x000047a8       0x20 spy/qstamp.o
                                 0x444 (size before relaxing)
 
-.debug_frame    0x00000000     0x1c8c
- .debug_frame   0x00000000      0x1a4 spy/bsp.o
- .debug_frame   0x000001a4       0x3c spy/main.o
- .debug_frame   0x000001e0       0x94 spy/philo.o
- .debug_frame   0x00000274       0xa8 spy/table.o
- .debug_frame   0x0000031c       0xb0 spy/startup_stm32f4xx.o
- .debug_frame   0x000003cc       0x3c spy/system_stm32f7xx.o
- .debug_frame   0x00000408      0x35c spy/stm32746g_discovery.o
- .debug_frame   0x00000764      0x1a8 spy/stm32f7xx_hal.o
- .debug_frame   0x0000090c      0x15c spy/stm32f7xx_hal_cortex.o
- .debug_frame   0x00000a68       0xd4 spy/stm32f7xx_hal_gpio.o
- .debug_frame   0x00000b3c      0x14c spy/stm32f7xx_hal_pwr_ex.o
- .debug_frame   0x00000c88      0x148 spy/stm32f7xx_hal_rcc.o
- .debug_frame   0x00000dd0       0x4c spy/stm32f7xx_hal_msp.o
- .debug_frame   0x00000e1c      0x458 spy/stm32f7xx_hal_uart.o
- .debug_frame   0x00001274       0xcc spy/qep_hsm.o
- .debug_frame   0x00001340       0x58 spy/qf_act.o
- .debug_frame   0x00001398       0xfc spy/qf_actq.o
- .debug_frame   0x00001494       0x94 spy/qf_dyn.o
- .debug_frame   0x00001528       0x80 spy/qf_mem.o
- .debug_frame   0x000015a8       0xb4 spy/qf_ps.o
- .debug_frame   0x0000165c       0x2c spy/qf_qact.o
- .debug_frame   0x00001688       0x80 spy/qf_qeq.o
- .debug_frame   0x00001708       0xe0 spy/qf_time.o
- .debug_frame   0x000017e8       0xd0 spy/qk.o
- .debug_frame   0x000018b8       0x50 spy/qk_mutex.o
- .debug_frame   0x00001908      0x2e4 spy/qs.o
- .debug_frame   0x00001bec       0xa0 spy/qs_rx.o
+.debug_frame    0x00000000     0x1c98
+ .debug_frame   0x00000000      0x1b4 spy/bsp.o
+ .debug_frame   0x000001b4       0x3c spy/main.o
+ .debug_frame   0x000001f0       0x94 spy/philo.o
+ .debug_frame   0x00000284       0xa8 spy/table.o
+ .debug_frame   0x0000032c       0xb0 spy/startup_stm32f4xx.o
+ .debug_frame   0x000003dc       0x3c spy/system_stm32f7xx.o
+ .debug_frame   0x00000418      0x35c spy/stm32746g_discovery.o
+ .debug_frame   0x00000774      0x1a8 spy/stm32f7xx_hal.o
+ .debug_frame   0x0000091c      0x15c spy/stm32f7xx_hal_cortex.o
+ .debug_frame   0x00000a78       0xd4 spy/stm32f7xx_hal_gpio.o
+ .debug_frame   0x00000b4c      0x14c spy/stm32f7xx_hal_pwr_ex.o
+ .debug_frame   0x00000c98      0x148 spy/stm32f7xx_hal_rcc.o
+ .debug_frame   0x00000de0       0x48 spy/stm32f7xx_hal_msp.o
+ .debug_frame   0x00000e28      0x458 spy/stm32f7xx_hal_uart.o
+ .debug_frame   0x00001280       0xcc spy/qep_hsm.o
+ .debug_frame   0x0000134c       0x58 spy/qf_act.o
+ .debug_frame   0x000013a4       0xfc spy/qf_actq.o
+ .debug_frame   0x000014a0       0x94 spy/qf_dyn.o
+ .debug_frame   0x00001534       0x80 spy/qf_mem.o
+ .debug_frame   0x000015b4       0xb4 spy/qf_ps.o
+ .debug_frame   0x00001668       0x2c spy/qf_qact.o
+ .debug_frame   0x00001694       0x80 spy/qf_qeq.o
+ .debug_frame   0x00001714       0xe0 spy/qf_time.o
+ .debug_frame   0x000017f4       0xd0 spy/qk.o
+ .debug_frame   0x000018c4       0x50 spy/qk_mutex.o
+ .debug_frame   0x00001914      0x2e4 spy/qs.o
+ .debug_frame   0x00001bf8       0xa0 spy/qs_rx.o
 
 Cross Reference Table
 
@@ -1980,8 +1984,10 @@ HAL_MultiProcessor_EnterMuteMode                  spy/stm32f7xx_hal_uart.o
 HAL_MultiProcessor_Init                           spy/stm32f7xx_hal_uart.o
 HAL_NVIC_ClearPendingIRQ                          spy/stm32f7xx_hal_cortex.o
 HAL_NVIC_DisableIRQ                               spy/stm32f7xx_hal_cortex.o
+                                                  spy/stm32f7xx_hal_msp.o
                                                   spy/stm32746g_discovery.o
 HAL_NVIC_EnableIRQ                                spy/stm32f7xx_hal_cortex.o
+                                                  spy/stm32f7xx_hal_msp.o
                                                   spy/stm32746g_discovery.o
 HAL_NVIC_GetActive                                spy/stm32f7xx_hal_cortex.o
 HAL_NVIC_GetPendingIRQ                            spy/stm32f7xx_hal_cortex.o
@@ -1989,6 +1995,7 @@ HAL_NVIC_GetPriority                              spy/stm32f7xx_hal_cortex.o
 HAL_NVIC_GetPriorityGrouping                      spy/stm32f7xx_hal_cortex.o
 HAL_NVIC_SetPendingIRQ                            spy/stm32f7xx_hal_cortex.o
 HAL_NVIC_SetPriority                              spy/stm32f7xx_hal_cortex.o
+                                                  spy/stm32f7xx_hal_msp.o
                                                   spy/stm32f7xx_hal.o
                                                   spy/stm32746g_discovery.o
 HAL_NVIC_SetPriorityGrouping                      spy/stm32f7xx_hal_cortex.o
@@ -2055,7 +2062,8 @@ HAL_UART_MspInit                                  spy/stm32f7xx_hal_msp.o
 HAL_UART_Receive                                  spy/stm32f7xx_hal_uart.o
 HAL_UART_Receive_DMA                              spy/stm32f7xx_hal_uart.o
 HAL_UART_Receive_IT                               spy/stm32f7xx_hal_uart.o
-HAL_UART_RxCpltCallback                           spy/stm32f7xx_hal_uart.o
+                                                  spy/bsp.o
+HAL_UART_RxCpltCallback                           spy/bsp.o
 HAL_UART_RxHalfCpltCallback                       spy/stm32f7xx_hal_uart.o
 HAL_UART_Transmit                                 spy/stm32f7xx_hal_uart.o
 HAL_UART_Transmit_DMA                             spy/stm32f7xx_hal_uart.o

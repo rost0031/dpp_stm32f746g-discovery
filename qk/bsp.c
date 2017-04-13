@@ -300,6 +300,23 @@ void BSP_terminate(int16_t result) {
 }
 
 /*..........................................................................*/
+/**
+ * @brief  Rx Transfer completed callback
+ * @param  UartHandle: UART handle
+ * @note   This example shows a simple way to report end of DMA Rx transfer,
+ * 	       and you can add your own implementation.
+ * @retval None
+ */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
+{
+	/* Set transmission flag: transfer complete */
+    uint8_t temp = 0;
+    while(1) {
+        temp++;
+    }
+}
+
+/*..........................................................................*/
 void QF_onStartup(void) {
     /* assing all priority bits for preemption-prio. and none to sub-prio. */
     NVIC_SetPriorityGrouping(0U);
@@ -313,7 +330,6 @@ void QF_onStartup(void) {
     * Assign a priority to EVERY ISR explicitly by calling NVIC_SetPriority().
     * DO NOT LEAVE THE ISR PRIORITIES AT THE DEFAULT VALUE!
     */
-    NVIC_SetPriority(USART1_IRQn,  USART1_PRIO);
     NVIC_SetPriority(SysTick_IRQn, SYSTICK_PRIO);
     //NVIC_SetPriority(GPIO_EVEN_IRQn, GPIO_EVEN_PRIO);
     /* ... */
@@ -321,7 +337,7 @@ void QF_onStartup(void) {
     /* enable IRQs... */
     //NVIC_EnableIRQ(GPIO_EVEN_IRQn);
 #ifdef Q_SPY
-    NVIC_EnableIRQ(USART1_IRQn); /* UART1 interrupt used for QS-RX */
+//    NVIC_EnableIRQ(USART1_IRQn); /* UART1 interrupt used for QS-RX */
 #endif
 
     QF_PRIMASK_ENABLE(); /* ready to accept interrupts */
@@ -411,6 +427,9 @@ uint8_t QS_onStartup(void const *arg) {
     if (HAL_UART_Init(&l_uartHandle) != HAL_OK) {
         return (uint8_t)0; /* return failure */
     }
+
+    /* Set UART to receive 1 byte at a time via interrupt */
+    HAL_UART_Receive_IT(&l_uartHandle, (uint8_t *)qsRxBuf, 1);
 
     QS_tickPeriod_ = SystemCoreClock / BSP_TICKS_PER_SEC;
     QS_tickTime_ = QS_tickPeriod_; /* to start the timestamp at zero */
